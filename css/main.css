@@ -1,0 +1,522 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.header {
+  height: 100vh;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../1.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.header__text-box {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-1 {
+  font-size: 5.5rem;
+  letter-spacing: 0.4rem;
+  line-height: 1.2;
+  font-weight: 300;
+  color: white;
+}
+
+.heading-2 {
+  font-size: 2.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
+.btn:link, .btn:visited {
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  padding: 1.5rem 5rem;
+  border-radius: 100px;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+}
+.btn:hover {
+  background-color: #28b485;
+  border: 1px solid #28b485;
+  cursor: pointer;
+}
+.btn:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  background-color: #28b485;
+  transform: scale(1.4, 1.8);
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem 0;
+}
+.navbar__list {
+  text-align: center;
+}
+.navbar__item {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.navbar__link {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.navbar__link--current {
+  color: #28b485;
+}
+.navbar__link:hover {
+  color: #28b485;
+  transform: translateY(-0.5rem);
+}
+
+.navigation__checkbox {
+  display: none;
+}
+.navigation__button {
+  height: 5rem;
+  width: 5rem;
+  position: fixed;
+  top: 3.5rem;
+  right: 3.5rem;
+  border-radius: 50%;
+  z-index: -200;
+  perspective: 150rem;
+  cursor: pointer;
+}
+.navigation__icon {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: all 1s;
+  transform-style: preserve-3d;
+}
+.navigation__iconface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 50%;
+}
+.navigation__iconface--front {
+  background-color: white;
+}
+.navigation__iconface--front::before {
+  content: "";
+  height: 2px;
+  width: 3rem;
+  background-color: #000;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.navigation__iconface--front::after {
+  content: "";
+  height: 2px;
+  width: 3rem;
+  background-color: #000;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.navigation__iconface--back {
+  background-color: #ff4343;
+  transform: rotateY(180deg);
+}
+.navigation__iconface--back::before {
+  content: "";
+  height: 2px;
+  width: 3rem;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.navigation__iconface--back::after {
+  content: "";
+  height: 2px;
+  width: 3rem;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.navigation__background {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(0);
+  position: fixed;
+  top: 4rem;
+  right: 4rem;
+  z-index: -100;
+  transition: all 0.5s ease-in-out;
+}
+.navigation__nav {
+  height: 100vh;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 150;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  z-index: -150;
+}
+.navigation__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.navigation__item {
+  font-size: 3rem;
+  font-weight: 400;
+  padding: 1rem 2rem;
+  color: black;
+  text-transform: uppercase;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.navigation__item:hover {
+  background-color: white;
+  color: #00ffaa;
+  transform: translateY(-1rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(50);
+}
+.navigation__checkbox:checked ~ .navigation__nav {
+  opacity: 1;
+  width: 100%;
+  transform: translateX(0);
+}
+.navigation__checkbox:checked ~ .navigation__button .navigation__icon {
+  transform: rotateY(540deg);
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    z-index: -100;
+  }
+  .navigation__button {
+    z-index: 200;
+  }
+  .navigation__background {
+    z-index: 100;
+  }
+  .navigation__nav {
+    z-index: 150;
+  }
+}
+.footer {
+  background-color: #000;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.footer__bottom {
+  color: #fff;
+  padding: 0 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.footer__heading {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 2rem;
+}
+.footer__contact-box {
+  width: 20%;
+}
+.footer__contact:link, .footer__contact:visited {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0.8rem 1.3rem;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__contact:hover {
+  background-color: #28b485;
+  border: 1px solid #28b485;
+  color: #000;
+}
+.footer__contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+.footer__terms-box {
+  width: 60%;
+}
+.footer__text {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.8rem;
+}
+
+.background-fill {
+  background-color: black;
+}
+
+.container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+.container-header__info {
+  width: 35%;
+}
+.container-header__heading {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.container-header__text {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.container-header__text:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.container-header__composition {
+  position: relative;
+  width: 35%;
+  height: 55rem;
+}
+.container-header__composition--photo {
+  position: absolute;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+  outline: 1.3px solid #28b485;
+  outline-offset: 1.5rem;
+  transition: all 0.2s;
+}
+.container-header__composition--photo-1 {
+  width: 65%;
+  top: 8rem;
+  left: 5rem;
+}
+.container-header__composition--photo-2 {
+  width: 50%;
+  top: 20rem;
+  left: 20rem;
+}
+
+.process {
+  width: 80%;
+  border-radius: 1.5rem;
+  margin: auto;
+  margin-bottom: 10rem;
+  padding: 2rem 5rem 3rem 5rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+.process--black {
+  background-color: #000;
+  color: #fff;
+}
+.process__heading {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.2rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+.process__heading--urdu {
+  letter-spacing: 0;
+  font-size: 3rem;
+  font-weight: 400;
+}
+.process__heading--pashto {
+  letter-spacing: 0;
+  font-size: 3rem;
+  font-weight: 300;
+}
+.process__text {
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 2rem;
+  width: 90%;
+}
+.process__text--white {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: right;
+  font-family: "Noto Nastaliq Urdu", serif;
+  line-height: 3rem;
+}
+.process__text--pashto {
+  font-weight: 200;
+  font-size: 1.5rem;
+  text-align: right;
+  font-family: "Noto Nastaliq Urdu", serif;
+  line-height: 3rem;
+  word-spacing: 0.5rem;
+}
+.process__image {
+  width: 7rem;
+  display: block;
+  margin: auto;
+}
+.process__item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 1.8rem;
+}
+.process__icon {
+  width: 3rem;
+  color: #28b485;
+}
+.process__icon--white {
+  color: #000;
+}
+.process__icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.process__icon-text--num {
+  font-size: 2rem;
+}
+.process__icon-text--day {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.three-day {
+  padding: 5rem 0;
+}
+
+.three-day-heading {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.three-day-description {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5rem;
+}
+
+.card {
+  width: 25%;
+  border-radius: 1rem;
+  background-color: #000;
+  padding: 1.5rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.card__heading {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: #28b485;
+  margin-bottom: 1rem;
+}
+.card__text {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.card__btn:link, .card__btn:visited {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-transform: capitalize;
+  border: 1px solid #fff;
+  font-size: 1.8rem;
+  padding: 0.8rem 3.5rem;
+  transition: all 0.2s;
+}
+.card__btn:hover {
+  border: 1px solid #28b485;
+  background-color: #28b485;
+  color: #000;
+}
