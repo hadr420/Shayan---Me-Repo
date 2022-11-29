@@ -667,3 +667,13 @@ body {
         box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
     }
 }
+
+
+//////////////////////////////////
+/// CONTACT
+.contact-header {
+    height: 75vh;
+    background-image: radial-gradient(rgba($color-black, .2), rgba($color-black, .2)), url(../5md.jpg);
+    background-size: cover;
+    background-position: center;
+}

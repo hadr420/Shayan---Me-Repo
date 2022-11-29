@@ -553,3 +553,10 @@ body {
   border-radius: 2rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
 }
+
+.contact-header {
+  height: 75vh;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../5md.jpg);
+  background-size: cover;
+  background-position: center;
+}
